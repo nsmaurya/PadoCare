@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="62J-Ch-J4Q">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Pedo Recorder-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Pedo Recorder" id="BYZ-38-t0r" customClass="PedoRecorderVC" customModule="PadoCare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +20,137 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!!!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTW-UD-Rfb">
+                                <rect key="frame" x="20" y="323.5" width="335" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.078431372550000003" green="0.50980392159999999" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="laO-Qk-C9Q">
+                                <rect key="frame" x="0.0" y="248.5" width="375" height="170"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="steps" translatesAutoresizingMaskIntoConstraints="NO" id="Bxm-py-S4H">
+                                        <rect key="frame" x="162" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="hwl-T7-ZmI"/>
+                                            <constraint firstAttribute="width" constant="50" id="xbj-hA-fbC"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJ4-Sb-Zut">
+                                        <rect key="frame" x="166" y="58" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="distance" translatesAutoresizingMaskIntoConstraints="NO" id="smV-Bg-cYM">
+                                        <rect key="frame" x="162" y="86.5" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="k5x-FE-zeM"/>
+                                            <constraint firstAttribute="width" constant="50" id="v9V-Di-KyB"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMc-pW-D2E">
+                                        <rect key="frame" x="166" y="144.5" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Bxm-py-S4H" firstAttribute="top" secondItem="laO-Qk-C9Q" secondAttribute="top" id="NOx-yv-PTR"/>
+                                    <constraint firstItem="smV-Bg-cYM" firstAttribute="top" secondItem="NJ4-Sb-Zut" secondAttribute="bottom" constant="8" id="Nv2-th-ibc"/>
+                                    <constraint firstItem="NJ4-Sb-Zut" firstAttribute="centerX" secondItem="Bxm-py-S4H" secondAttribute="centerX" id="RH8-bM-JyR"/>
+                                    <constraint firstItem="bMc-pW-D2E" firstAttribute="centerX" secondItem="smV-Bg-cYM" secondAttribute="centerX" id="Vh8-1w-Noe"/>
+                                    <constraint firstItem="Bxm-py-S4H" firstAttribute="centerX" secondItem="laO-Qk-C9Q" secondAttribute="centerX" id="Zqt-ke-0bU"/>
+                                    <constraint firstItem="bMc-pW-D2E" firstAttribute="top" secondItem="smV-Bg-cYM" secondAttribute="bottom" constant="8" id="abE-Q9-sG8"/>
+                                    <constraint firstItem="NJ4-Sb-Zut" firstAttribute="top" secondItem="Bxm-py-S4H" secondAttribute="bottom" constant="8" id="qB3-ZS-wEq"/>
+                                    <constraint firstItem="smV-Bg-cYM" firstAttribute="centerX" secondItem="Bxm-py-S4H" secondAttribute="centerX" id="vC6-LS-sx3"/>
+                                    <constraint firstAttribute="height" constant="170" id="vlF-9b-u8i"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGM-Os-oej">
+                                <rect key="frame" x="20" y="84" width="100" height="30"/>
+                                <color key="backgroundColor" red="0.078431372550000003" green="0.50980392159999999" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2OM-J4-5tO"/>
+                                    <constraint firstAttribute="width" constant="100" id="CQ5-Xx-D2i"/>
+                                </constraints>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startStopButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aQ0-gL-L71"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSU-iI-gcN">
+                                <rect key="frame" x="255" y="84" width="100" height="30"/>
+                                <state key="normal" title="Pause"/>
+                                <connections>
+                                    <action selector="pauseResumeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hzT-G3-FcU"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="SO5-2l-9WY">
+                                <rect key="frame" x="60" y="89" width="20" height="20"/>
+                                <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="oGM-Os-oej" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="0rX-aq-qLU"/>
+                            <constraint firstItem="gTW-UD-Rfb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="7rj-Vr-cXQ"/>
+                            <constraint firstAttribute="trailing" secondItem="FSU-iI-gcN" secondAttribute="trailing" constant="20" id="DtR-c9-cEf"/>
+                            <constraint firstAttribute="trailing" secondItem="gTW-UD-Rfb" secondAttribute="trailing" constant="20" id="G5B-tu-yeC"/>
+                            <constraint firstItem="oGM-Os-oej" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="Hay-eR-e1z"/>
+                            <constraint firstItem="FSU-iI-gcN" firstAttribute="centerY" secondItem="oGM-Os-oej" secondAttribute="centerY" id="L5g-8d-XgK"/>
+                            <constraint firstItem="FSU-iI-gcN" firstAttribute="width" secondItem="oGM-Os-oej" secondAttribute="width" id="MrF-cB-Izr"/>
+                            <constraint firstAttribute="trailing" secondItem="laO-Qk-C9Q" secondAttribute="trailing" id="SlC-di-sJV"/>
+                            <constraint firstItem="laO-Qk-C9Q" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="eGo-85-fWv"/>
+                            <constraint firstItem="SO5-2l-9WY" firstAttribute="centerY" secondItem="oGM-Os-oej" secondAttribute="centerY" id="gf7-DJ-1oQ"/>
+                            <constraint firstItem="FSU-iI-gcN" firstAttribute="height" secondItem="oGM-Os-oej" secondAttribute="height" id="pgM-nx-UpN"/>
+                            <constraint firstItem="SO5-2l-9WY" firstAttribute="leading" secondItem="oGM-Os-oej" secondAttribute="trailing" constant="-60" id="s7I-3U-MQZ"/>
+                            <constraint firstItem="gTW-UD-Rfb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="u61-qu-PBP"/>
+                            <constraint firstItem="laO-Qk-C9Q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yl4-ez-pZN"/>
+                            <constraint firstItem="laO-Qk-C9Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zDn-3C-cFw"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Pedo Recorder" id="Ima-KJ-D1w"/>
+                    <connections>
+                        <outlet property="activityView" destination="SO5-2l-9WY" id="pDv-GN-twu"/>
+                        <outlet property="distanceLabel" destination="bMc-pW-D2E" id="Pg5-XH-nyA"/>
+                        <outlet property="pauseResumeButton" destination="FSU-iI-gcN" id="lA6-jv-vgc"/>
+                        <outlet property="pedoInformationView" destination="laO-Qk-C9Q" id="sND-RA-ab9"/>
+                        <outlet property="startStopButton" destination="oGM-Os-oej" id="hHE-5f-iUO"/>
+                        <outlet property="stepsLabel" destination="NJ4-Sb-Zut" id="s8o-ql-KJE"/>
+                        <outlet property="welcomeLabel" destination="gTW-UD-Rfb" id="QJZ-VV-tao"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="973.60000000000002" y="-545.57721139430294"/>
+        </scene>
+        <!--Pedo Recorder-->
+        <scene sceneID="Otw-wW-zkb">
+            <objects>
+                <navigationController title="Pedo Recorder" automaticallyAdjustsScrollViewInsets="NO" id="62J-Ch-J4Q" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yLN-jb-iVS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="7mL-Ig-KKP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ef-yx-0Bl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="-543.77811094452773"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="distance" width="50" height="50"/>
+        <image name="steps" width="50" height="50"/>
+    </resources>
 </document>
