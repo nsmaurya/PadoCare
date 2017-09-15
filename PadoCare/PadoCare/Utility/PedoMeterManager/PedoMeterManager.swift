@@ -19,13 +19,14 @@ class PedoMeterManager:NSObject {
     //variables
     weak var delegate:PedoMeterManagerProtocol?
     fileprivate let padoMeter:CMPedometer
-    
-    class var sharedInstance:PedoMeterManager{
+    var pedoStartDate:Date?
+    var pedoEndDate:Date?
+    class var sharedInstance:PedoMeterManager {
         return _sharedInstance
     }
     
     //initialization
-    fileprivate override init(){
+    fileprivate override init() {
         padoMeter = CMPedometer()
         delegate = nil
         super.init()
@@ -33,7 +34,8 @@ class PedoMeterManager:NSObject {
     
     //start pedometer
     func start() {
-        self.padoMeter.startUpdates(from: Date()) { (pedoInfo, error) in
+        self.pedoStartDate = Date()
+        self.padoMeter.startUpdates(from: self.pedoStartDate!) { (pedoInfo, error) in
             if error == nil {
                 var dictPedoInfo = [String:NSNumber?]()
                 if CMPedometer.isStepCountingAvailable() {
@@ -52,10 +54,11 @@ class PedoMeterManager:NSObject {
     //stop pedometer
     func stop() {
         self.padoMeter.stopUpdates()
+        self.pedoEndDate = Date()
     }
     
     //pause pedometer
     func pause() {
-        self.padoMeter
+        
     }
 }

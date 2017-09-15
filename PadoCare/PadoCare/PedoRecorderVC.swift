@@ -12,6 +12,7 @@ import UIKit
 class PedoRecorderVC: UIViewController {
 
     //IBOutlet
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var startStopButton: UIButton!
@@ -19,6 +20,9 @@ class PedoRecorderVC: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var stepsLabel: UILabel!
     @IBOutlet weak var pedoInformationView: UIView!
+    
+    //variables
+    var totalDistance:Double?
     
     //MARK:- View Life Cycle
     override func viewDidLoad() {
@@ -41,6 +45,7 @@ class PedoRecorderVC: UIViewController {
         self.startStopButton.layer.cornerRadius = 4.0
         self.pauseResumeButton.isHidden = true
         self.activityView.isHidden = true
+        self.saveButton.isHidden = true
     }
 
     //MARK:- Action method
@@ -55,6 +60,8 @@ class PedoRecorderVC: UIViewController {
                 PedoMeterManager.sharedInstance.delegate = self
                 PedoMeterManager.sharedInstance.start()
                 self.activityView.isHidden = false
+                self.saveButton.isHidden = true
+                self.welcomeLabel.textColor = UIColor.black
                 self.welcomeLabel.text = "Walk over to see footprint count!!!"
             } else {//stop
                 PedoMeterManager.sharedInstance.stop()
@@ -65,6 +72,9 @@ class PedoRecorderVC: UIViewController {
                     self.pauseResumeButton.setTitle("Pause", for: .normal)
                     self.welcomeLabel.textColor = UIColor.black
                     self.welcomeLabel.text = "Welcome!!!"
+                    if self.totalDistance != nil {
+                        self.saveButton.isHidden = false
+                    }
                 }
             }
         }
@@ -84,11 +94,25 @@ class PedoRecorderVC: UIViewController {
             }
         }
     }
+    
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
+        if let distanceCovered = self.totalDistance {
+            self.saveButton.isHidden = true
+            HealthManager.sharedInstance.delegate = self
+            HealthManager.sharedInstance.saveInfo(distance: distanceCovered)
+            self.startStopButton.isHidden = true
+            self.pauseResumeButton.isHidden = true
+            self.pedoInformationView.isHidden = true
+            self.welcomeLabel.text = "Saving..."
+        }
+    }
 }
 
+//MARK:- PedoMeterManager Delegate
 extension PedoRecorderVC:PedoMeterManagerProtocol {
     func didReceivedPedoInfo(padoInfo: [String : NSNumber?]) {
         if let stepsValue = padoInfo["steps"], let distanceValue = padoInfo["distance"] {
+            self.totalDistance = distanceValue?.doubleValue
             DispatchQueue.main.async {
                 if self.startStopButton.title(for: .normal) == "" {
                     self.activityView.isHidden = true
@@ -112,6 +136,19 @@ extension PedoRecorderVC:PedoMeterManagerProtocol {
             self.welcomeLabel.textColor = UIColor.red
             self.welcomeLabel.text = errorMsg
         }
+    }
+}
+
+//MARK:- HealthManager Delegate
+extension PedoRecorderVC:HealthManagerProtocol {
+    func didReceivedSaveSuccess() {
+        self.startStopButton.isHidden = false
+        self.welcomeLabel.textColor = UIColor.green
+        self.welcomeLabel.text = "Save Successful!!!\nYou can start with new measurement"
+    }
+    func didFailToSave(errorMsg: String) {
+        self.welcomeLabel.textColor = UIColor.red
+        self.welcomeLabel.text = errorMsg
     }
 }
 
