@@ -9,10 +9,9 @@
 import Foundation
 
 class PedoRecorderInteractor {
-    class func getFormatedStringFromNumber(number:NSNumber?, withFractionDigit:Int) -> String {
+    class func getFormatedStringFromNumber(number:NSNumber?) -> String {
         if let numberValue = number {
             let formatter = NumberFormatter()
-            formatter.maximumFractionDigits = withFractionDigit
             return formatter.string(from: numberValue) ?? "0"
         } else {
             return "0"

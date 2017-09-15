@@ -16,7 +16,6 @@ class PedoRecorderVC: UIViewController {
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var startStopButton: UIButton!
-    @IBOutlet weak var pauseResumeButton: UIButton!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var stepsLabel: UILabel!
     @IBOutlet weak var pedoInformationView: UIView!
@@ -28,7 +27,6 @@ class PedoRecorderVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeViews()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,11 +37,7 @@ class PedoRecorderVC: UIViewController {
     //MARK:- Helper method
     fileprivate func initializeViews() {
         self.pedoInformationView.isHidden = true
-        self.pauseResumeButton.layer.borderColor = UIColor(red: 20.0/255.0, green: 130.0/255.0, blue: 250.0/255.0, alpha: 1.0).cgColor
-        self.pauseResumeButton.layer.borderWidth = 1.0
-        self.pauseResumeButton.layer.cornerRadius = 4.0
         self.startStopButton.layer.cornerRadius = 4.0
-        self.pauseResumeButton.isHidden = true
         self.activityView.isHidden = true
         self.saveButton.isHidden = true
     }
@@ -52,7 +46,7 @@ class PedoRecorderVC: UIViewController {
     @IBAction func startStopButtonTapped(_ sender: UIButton) {
         let buttonTitle = sender.title(for: .normal)
         if let title = buttonTitle {
-            if title == "" {
+            if title == "" {//fetching steps count
                 return
             }
             if title == "Start" {//start
@@ -68,8 +62,6 @@ class PedoRecorderVC: UIViewController {
                 DispatchQueue.main.async {
                     self.pedoInformationView.isHidden = true
                     self.startStopButton.setTitle("Start", for: .normal)
-                    self.pauseResumeButton.isHidden = true
-                    self.pauseResumeButton.setTitle("Pause", for: .normal)
                     self.welcomeLabel.textColor = UIColor.black
                     self.welcomeLabel.text = "Welcome!!!"
                     if self.totalDistance != nil {
@@ -80,28 +72,12 @@ class PedoRecorderVC: UIViewController {
         }
     }
     
-    @IBAction func pauseResumeButtonTapped(_ sender: UIButton) {
-        let buttonTitle = sender.title(for: .normal)
-        if let title = buttonTitle {
-            var updatedButtonTitle = "Pause"
-            if title == "Pause" {//pause
-                updatedButtonTitle = "Resume"
-            } else {//resume
-                
-            }
-            DispatchQueue.main.async {
-                self.pauseResumeButton.setTitle(updatedButtonTitle, for: .normal)
-            }
-        }
-    }
-    
     @IBAction func saveButtonTapped(_ sender: UIButton) {
         if let distanceCovered = self.totalDistance {
             self.saveButton.isHidden = true
             HealthManager.sharedInstance.delegate = self
             HealthManager.sharedInstance.saveInfo(distance: distanceCovered)
             self.startStopButton.isHidden = true
-            self.pauseResumeButton.isHidden = true
             self.pedoInformationView.isHidden = true
             self.welcomeLabel.text = "Saving..."
         }
@@ -117,12 +93,10 @@ extension PedoRecorderVC:PedoMeterManagerProtocol {
                 if self.startStopButton.title(for: .normal) == "" {
                     self.activityView.isHidden = true
                     self.startStopButton.setTitle("Stop", for: .normal)
-                    self.pauseResumeButton.isHidden = false
-                    self.pauseResumeButton.setTitle("Pause", for: .normal)
                 }
                 self.pedoInformationView.isHidden = false
-                self.stepsLabel.text = PedoRecorderInteractor.getFormatedStringFromNumber(number: stepsValue, withFractionDigit: 2)
-                self.distanceLabel.text = PedoRecorderInteractor.getFormatedStringFromNumber(number: distanceValue, withFractionDigit: 0)
+                self.stepsLabel.text = PedoRecorderInteractor.getFormatedStringFromNumber(number: stepsValue)
+                self.distanceLabel.text = PedoRecorderInteractor.getFormatedStringFromNumber(number: distanceValue)
             }
             
         }
@@ -131,7 +105,6 @@ extension PedoRecorderVC:PedoMeterManagerProtocol {
         DispatchQueue.main.async {
             self.activityView.isHidden = true
             self.startStopButton.isHidden = true
-            self.pauseResumeButton.isHidden = true
             self.pedoInformationView.isHidden = true
             self.welcomeLabel.textColor = UIColor.red
             self.welcomeLabel.text = errorMsg
@@ -149,6 +122,7 @@ extension PedoRecorderVC:HealthManagerProtocol {
     func didFailToSave(errorMsg: String) {
         self.welcomeLabel.textColor = UIColor.red
         self.welcomeLabel.text = errorMsg
+        self.startStopButton.isHidden = false
     }
 }
 

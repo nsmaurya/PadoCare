@@ -70,7 +70,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGM-Os-oej">
-                                <rect key="frame" x="20" y="84" width="100" height="45"/>
+                                <rect key="frame" x="137.5" y="84" width="100" height="45"/>
                                 <color key="backgroundColor" red="0.078431372550000003" green="0.50980392159999999" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="2OM-J4-5tO"/>
@@ -83,15 +83,8 @@
                                     <action selector="startStopButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aQ0-gL-L71"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSU-iI-gcN">
-                                <rect key="frame" x="255" y="84" width="100" height="45"/>
-                                <state key="normal" title="Pause"/>
-                                <connections>
-                                    <action selector="pauseResumeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hzT-G3-FcU"/>
-                                </connections>
-                            </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="SO5-2l-9WY">
-                                <rect key="frame" x="60" y="96.5" width="20" height="20"/>
+                                <rect key="frame" x="177.5" y="96.5" width="20" height="20"/>
                                 <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHo-63-UJK">
@@ -110,20 +103,16 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="oGM-Os-oej" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="0rX-aq-qLU"/>
                             <constraint firstItem="gTW-UD-Rfb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="7rj-Vr-cXQ"/>
                             <constraint firstAttribute="trailing" secondItem="aHo-63-UJK" secondAttribute="trailing" id="Dan-MS-Uut"/>
-                            <constraint firstAttribute="trailing" secondItem="FSU-iI-gcN" secondAttribute="trailing" constant="20" id="DtR-c9-cEf"/>
                             <constraint firstAttribute="trailing" secondItem="gTW-UD-Rfb" secondAttribute="trailing" constant="20" id="G5B-tu-yeC"/>
                             <constraint firstItem="oGM-Os-oej" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="Hay-eR-e1z"/>
                             <constraint firstItem="aHo-63-UJK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Jh0-i3-CGH"/>
-                            <constraint firstItem="FSU-iI-gcN" firstAttribute="centerY" secondItem="oGM-Os-oej" secondAttribute="centerY" id="L5g-8d-XgK"/>
-                            <constraint firstItem="FSU-iI-gcN" firstAttribute="width" secondItem="oGM-Os-oej" secondAttribute="width" id="MrF-cB-Izr"/>
                             <constraint firstAttribute="trailing" secondItem="laO-Qk-C9Q" secondAttribute="trailing" id="SlC-di-sJV"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="aHo-63-UJK" secondAttribute="bottom" id="Z3j-rT-RLO"/>
                             <constraint firstItem="laO-Qk-C9Q" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="eGo-85-fWv"/>
                             <constraint firstItem="SO5-2l-9WY" firstAttribute="centerY" secondItem="oGM-Os-oej" secondAttribute="centerY" id="gf7-DJ-1oQ"/>
-                            <constraint firstItem="FSU-iI-gcN" firstAttribute="height" secondItem="oGM-Os-oej" secondAttribute="height" id="pgM-nx-UpN"/>
+                            <constraint firstItem="oGM-Os-oej" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qbF-pI-iHs"/>
                             <constraint firstItem="SO5-2l-9WY" firstAttribute="leading" secondItem="oGM-Os-oej" secondAttribute="trailing" constant="-60" id="s7I-3U-MQZ"/>
                             <constraint firstItem="gTW-UD-Rfb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="u61-qu-PBP"/>
                             <constraint firstItem="laO-Qk-C9Q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yl4-ez-pZN"/>
@@ -134,7 +123,6 @@
                     <connections>
                         <outlet property="activityView" destination="SO5-2l-9WY" id="pDv-GN-twu"/>
                         <outlet property="distanceLabel" destination="bMc-pW-D2E" id="Pg5-XH-nyA"/>
-                        <outlet property="pauseResumeButton" destination="FSU-iI-gcN" id="lA6-jv-vgc"/>
                         <outlet property="pedoInformationView" destination="laO-Qk-C9Q" id="sND-RA-ab9"/>
                         <outlet property="saveButton" destination="aHo-63-UJK" id="if7-Cb-Xcc"/>
                         <outlet property="startStopButton" destination="oGM-Os-oej" id="hHE-5f-iUO"/>

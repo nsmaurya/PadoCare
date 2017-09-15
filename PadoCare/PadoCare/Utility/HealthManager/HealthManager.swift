@@ -20,6 +20,7 @@ class HealthManager:NSObject {
     fileprivate let healthStore:HKHealthStore
     weak var delegate:HealthManagerProtocol?
     
+    //shared instance
     class var sharedInstance:HealthManager {
         return _sharedInstance
     }
@@ -31,7 +32,7 @@ class HealthManager:NSObject {
         super.init()
     }
     
-    //save
+    //MARK:- Save Distance Info
     func saveInfo(distance:Double) {
         let writeTypes: Set<HKSampleType> = Set([HKObjectType.workoutType()])
         self.healthStore.requestAuthorization(toShare: writeTypes, read: nil) { (isSuccess, error) in
